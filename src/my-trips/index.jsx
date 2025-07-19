@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from '../services/firebaseConfig';
-import UserTripCardItem from './components/userTripCardItem';
+import UserTripCardItem from './components/UserTripCardItem';
 
 function MyTrips() {
     

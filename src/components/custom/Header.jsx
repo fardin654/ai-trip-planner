@@ -11,6 +11,8 @@ import { googleLogout } from '@react-oauth/google';
 import { FcGoogle } from "react-icons/fc";
 import { useGoogleLogin } from '@react-oauth/google';
 import { Button } from "@/components/ui/button"
+import { Typewriter } from 'react-simple-typewriter';
+
 
 import {
   Dialog,
@@ -48,7 +50,22 @@ function Header() {
   
   return (
     <div className='p-3 shadow-sm flex justify-between items-center px-5'>
-      <a href='/'><img src='./logo.svg'/></a>
+      <a href='/'>
+      <div className='flex flex-row'>
+        <img src='./logo.svg'/>
+        <h2 className="hidden sm:block text-xl ml-1.5 mt-1.5 font-bold bg-gradient-to-r from-[#00C897] to-[#f56551] bg-clip-text text-transparent">
+          <Typewriter
+            words={['TrekTailor', 'Your Travel Buddy', 'Plan with AI']}
+            loop={true}
+            cursor
+            cursorStyle="|"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </h2>
+      </div>
+      </a>
       <div>
         {users?
         <div className="flex items-center gap-4">

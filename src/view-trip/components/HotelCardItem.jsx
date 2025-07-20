@@ -47,11 +47,11 @@ function HotelCardItem({ hotel }) {
           alt={hotel?.hotelName}
           className="w-[130px] h-[130px] rounded-xl"
         />
-        <div className="flex flex-col justify-between text-center sm:text-left w-full sm:w-auto overflow-hidden">
-          <h2 className="font-semibold text-lg">{hotel?.hotelName || 'Unnamed Hotel'}</h2>
-          <h2 className="text-sm text-gray-500 mt-1 truncate">📍 {hotel?.hotelAddress || 'Address unavailable'}</h2>
-          <h2 className="text-sm mt-2">💵 {hotel?.price || 'Price not available'}</h2>
-          <h2 className="text-sm text-yellow-600 mt-1">⭐ {hotel?.rating || 'Not Rated'}</h2>
+        <div className="flex flex-col justify-between text-center sm:text-left w-[300px] sm:w-auto overflow-hidden">
+          <h2 className="font-semibold text-lg sm:w-auto">{hotel?.hotelName || 'Unnamed Hotel'}</h2>
+          <h2 className="text-sm text-gray-500 mt-1 truncate sm:w-auto">📍 {hotel?.hotelAddress || 'Address unavailable'}</h2>
+          <h2 className="text-sm mt-2 sm:w-auto">💵 {hotel?.price || 'Price not available'}</h2>
+          <h2 className="text-sm text-yellow-600 mt-1 sm:w-auto">⭐ {hotel?.rating || 'Not Rated'}</h2>
         </div>
       </div>
     </a>

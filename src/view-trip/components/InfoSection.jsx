@@ -49,7 +49,7 @@ const GetPlacePhoto = async () => {
               <div className='flex gap-5'>
                 <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-sm md:text-md'>📆 {trip.userSelection?.noOfDays} Day</h2>
                 <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-sm md:text-md'>💵 {trip.userSelection?.Budget} Budget</h2>
-                <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-sm md:text-md'>🎲 No. of Travellers: {trip.userSelection?.taveller} Day</h2>
+                <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-sm md:text-md'>🎲 No. of Travellers: {trip.userSelection?.traveller}</h2>
               </div>
           </div>
           <Button className='bg-black text-white hover:bg-gray-800 w-[5%]'><IoShareOutline /></Button>

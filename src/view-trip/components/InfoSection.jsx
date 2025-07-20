@@ -52,7 +52,7 @@ const GetPlacePhoto = async () => {
                 <h2 className='p-1 px-3 bg-gray-200 rounded-full text-gray-500 text-sm md:text-md'>🎲 No. of Travellers: {trip.userSelection?.traveller}</h2>
               </div>
           </div>
-          <Button className='bg-black text-white hover:bg-gray-800 w-[5%]'><IoShareOutline /></Button>
+          {/* <Button className='bg-black text-white hover:bg-gray-800 w-[5%]'><IoShareOutline /></Button> */}
         </div>
     </div>
   )

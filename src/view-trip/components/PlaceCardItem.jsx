@@ -42,7 +42,7 @@ function PlaceCardItem({place}) {
         rel="noopener noreferrer"
         className="hover:scale-105 transition-all cursor-pointer block"
     >
-    <div className='border rounded-xl p-3 mt-2 flex gap-5 hover:scale-105 transition-all hover:shadow cursor-pointer'>
+    <div className='shadow rounded-xl p-3 mt-2 flex gap-5 hover:scale-105 transition-all hover:shadow cursor-pointer'>
       <img src={imageUrl?imageUrl:'/placeholder.jpg'} className='w-[130px] h-[130px] rounded-xl'/>
       <div>
         <h2 className='font-bold text-lg'>{place.placeName}</h2>

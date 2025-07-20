@@ -17,7 +17,7 @@ function PlacesToVisit({trip}) {
 
   return (
     <div>
-      <h2 className='font-bold text-lg'>Places to Visit</h2>
+      <h2 className='font-bold text-2xl mt-5'>Places to Visit</h2>
       <div>
         {sortedItinerary.map(([dayKey, dayValue], index) => (
           <div className='mt-5' key={index}>

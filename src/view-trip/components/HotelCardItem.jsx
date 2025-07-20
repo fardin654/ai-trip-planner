@@ -41,16 +41,16 @@ function HotelCardItem({ hotel }) {
       rel="noopener noreferrer"
       className="hover:scale-[1.02] transition-transform block w-full"
     >
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 bg-white shadow-md rounded-xl p-4 w-full ">
+      <div className='shadow rounded-xl p-3 mt-2 flex gap-5 hover:scale-105 transition-all hover:shadow cursor-pointer'>
         <img
           src={imageUrl ? imageUrl : '/placeholder.jpg'}
           alt={hotel?.hotelName}
-          className="w-full sm:w-[130px] h-[180px] sm:h-[130px] object-cover rounded-xl"
+          className="w-[130px] h-[130px] rounded-xl"
         />
-        <div className="flex flex-col text-center sm:text-left w-full sm:w-auto">
+        <div className="flex flex-col justify-between text-center sm:text-left w-full sm:w-auto overflow-hidden">
           <h2 className="font-semibold text-lg">{hotel?.hotelName || 'Unnamed Hotel'}</h2>
-          <h2 className="text-sm text-gray-500 mt-1">📍 {hotel?.hotelAddress || 'Address unavailable'}</h2>
-          <h2 className="text-base mt-2">💵 {hotel?.price || 'Price not available'}</h2>
+          <h2 className="text-sm text-gray-500 mt-1 truncate">📍 {hotel?.hotelAddress || 'Address unavailable'}</h2>
+          <h2 className="text-sm mt-2">💵 {hotel?.price || 'Price not available'}</h2>
           <h2 className="text-sm text-yellow-600 mt-1">⭐ {hotel?.rating || 'Not Rated'}</h2>
         </div>
       </div>

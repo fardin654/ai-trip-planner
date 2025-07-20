@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from '../services/firebaseConfig';
 import UserTripCardItem from './components/UserTripCardItem';
+import Footer from '../view-trip/components/Footer';
 
 function MyTrips() {
     
@@ -42,6 +43,7 @@ function MyTrips() {
             <div key={index} className='w-[200px] h-[150px] bg-slate-200 animate-pulse rounded-xl'>
             </div>))}
         </div>
+        <Footer/>
     </div>
   )
 }

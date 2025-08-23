@@ -133,32 +133,20 @@ function CreateTrip() {
   
 
   const fetchSuggestions = async (searchText) => {
-  if (searchText.length > 2) {
-    try {
-      const response = await fetch(
-        `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
-          searchText
-        )}&key=${import.meta.env.VITE_OPENCAGE_API_KEY}`
-      );
-
-      const data = await response.json();
-
-      // OpenCage returns results in data.results[]
-      const suggestions = data.results.map(result => ({
-        name: result.formatted,
-        lat: result.geometry.lat,
-        lng: result.geometry.lng
-      }));
-
-      setSuggestions(suggestions);
-    } catch (error) {
-      console.error("Error fetching suggestions:", error);
+    if (searchText.length > 2) {
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchText)}`
+        );
+        const data = await response.json();
+        setSuggestions(data);
+      } catch (error) {
+        console.error('Error fetching suggestions:', error);
+      }
+    } else {
+      setSuggestions([]);
     }
-  } else {
-    setSuggestions([]);
-  }
-};
-
+  };
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -229,7 +217,7 @@ function CreateTrip() {
               <div className={`flex items-center justify-center h-10 w-10 rounded-full ${formData.location ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-400'} mr-4`}>
                 <MapPin size={20} />
               </div>
-              <h2 className="text-[1.3rem] font-semibold text-gray-900">Where do you want to go?</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">Where do you want to go?</h2>
               <ChevronDown className={`ml-auto transform ${activeSection === 'destination' ? 'rotate-180' : ''} transition-transform text-gray-400`} />
             </div>
             
@@ -253,7 +241,7 @@ function CreateTrip() {
                         onClick={() => handleSuggestionClick(place)}
                         className="p-3 hover:bg-blue-50 cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors"
                       >
-                        {place.name}
+                        {place.display_name}
                       </li>
                     ))}
                   </ul>
@@ -261,7 +249,7 @@ function CreateTrip() {
                 {formData.location && (
                   <div className="mt-4 p-3 bg-green-50 text-green-700 rounded-lg inline-flex items-center">
                     <MapPin size={16} className="mr-2" />
-                    <span>Selected: {formData.location.name}</span>
+                    <span>Selected: {formData.location.display_name}</span>
                   </div>
                 )}
               </div>
@@ -277,7 +265,7 @@ function CreateTrip() {
               <div className={`flex items-center justify-center h-10 w-10 rounded-full ${formData.noOfDays ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-400'} mr-4`}>
                 <Calendar size={20} />
               </div>
-              <h2 className="text-[1.3rem] font-semibold text-gray-900">How many days?</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">How many days?</h2>
               <ChevronDown className={`ml-auto transform ${activeSection === 'duration' ? 'rotate-180' : ''} transition-transform text-gray-400`} />
             </div>
             
@@ -313,7 +301,7 @@ function CreateTrip() {
               <div className={`flex items-center justify-center h-10 w-10 rounded-full ${formData.Budget ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-400'} mr-4`}>
                 <DollarSign size={20} />
               </div>
-              <h2 className="text-[1.3rem] font-semibold text-gray-900">What's your budget?</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">What's your budget?</h2>
               <ChevronDown className={`ml-auto transform ${activeSection === 'budget' ? 'rotate-180' : ''} transition-transform text-gray-400`} />
             </div>
             
@@ -343,7 +331,7 @@ function CreateTrip() {
               <div className={`flex items-center justify-center h-10 w-10 rounded-full ${formData.traveller ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-400'} mr-4`}>
                 <Users size={20} />
               </div>
-              <h2 className="text-[1.3rem] font-semibold text-gray-900">Who's traveling?</h2>
+              <h2 className="text-2xl font-semibold text-gray-900">Who's traveling?</h2>
               <ChevronDown className={`ml-auto transform ${activeSection === 'travelers' ? 'rotate-180' : ''} transition-transform text-gray-400`} />
             </div>
             

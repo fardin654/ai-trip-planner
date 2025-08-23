@@ -134,7 +134,6 @@ function CreateTrip() {
 
   const fetchSuggestions = async (searchText) => {
   if (searchText.length > 2) {
-    console.log("API Key:", import.meta.env.VITE_OPENCAGE_API_KEY[0]); // Debugging line 
     try {
       const response = await fetch(
         `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(

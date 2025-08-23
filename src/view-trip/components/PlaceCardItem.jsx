@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { FaClock, FaExternalLinkAlt } from "react-icons/fa";
 const unsplash = import.meta.env.VITE_UNSPLASH_ACCESS_KEY
-
 
 function PlaceCardItem({place}) {
    const [imageUrl, setImageUrl] = useState("");
+   const [imageLoading, setImageLoading] = useState(true);
    
    useEffect(() => {
      place && GetPlacePhoto();
@@ -12,6 +13,7 @@ function PlaceCardItem({place}) {
    
    const GetPlacePhoto = async () => {
      setImageUrl("");
+     setImageLoading(true);
    
      const placeName = place?.placeName;
      if (!placeName) return;
@@ -33,24 +35,50 @@ function PlaceCardItem({place}) {
        }
      } catch (err) {
        console.error("Error fetching image from Unsplash:", err);
+     } finally{
+       setImageLoading(false);
      }
     };
   return (
     <a
-        href={`https://www.google.com/maps/search/${encodeURIComponent(place?.placeName)}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:scale-105 transition-all cursor-pointer block"
+      href={`https://www.google.com/maps/search/${encodeURIComponent(place?.placeName)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block transition-all duration-300 hover:scale-[1.02] hover:shadow-lg h-full"
     >
-    <div className='shadow rounded-xl p-3 mt-2 flex gap-5 hover:scale-105 transition-all hover:shadow cursor-pointer'>
-      <img src={imageUrl?imageUrl:'/placeholder.jpg'} className='w-[130px] h-[130px] rounded-xl'/>
-      <div>
-        <h2 className='font-bold text-lg'>{place.placeName}</h2>
-        <p className='text-sm text-gray-400'>{place.placeDetails}</p>
-        <h2 className='mt-2'>🕙 {place.timeToTravel}</h2>
-        {/* <Button className='bg-black text-white hover:bg-gray-800 w-[100%] h-[15%] mt-3' ><FaMapLocation /></Button> */}
+      <div className='bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full'>
+        {/* Image container with fixed aspect ratio */}
+        <div className="relative h-48 w-full">
+          {imageLoading ? (
+            <div className="w-full h-full bg-gray-200 animate-pulse"></div>
+          ) : (
+            <img 
+              src={imageUrl || '/placeholder.jpg'} 
+              className='w-full h-full object-cover'
+              alt={place.placeName}
+              onLoad={() => setImageLoading(false)}
+            />
+          )}
+        </div>
+        
+        {/* Content container with flex-grow to take remaining space */}
+        <div className="p-4 flex flex-col flex-grow">
+          <h2 className='font-bold text-lg mb-2 line-clamp-2'>{place.placeName}</h2>
+          <p className='text-gray-600 text-sm mb-4 line-clamp-3 flex-grow'>{place.placeDetails}</p>
+          
+          <div className="mt-auto">
+            <div className="flex items-center text-sm text-gray-500 mb-3">
+              <FaClock className="mr-2 text-blue-500" />
+              <span>{place.timeToTravel}</span>
+            </div>
+            
+            <div className="flex items-center text-blue-600 text-sm font-medium">
+              <FaExternalLinkAlt className="mr-1" size={12} />
+              <span>View on map</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
     </a>
   )
 }

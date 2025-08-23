@@ -134,7 +134,7 @@ function CreateTrip() {
 
   const fetchSuggestions = async (searchText) => {
   if (searchText.length > 2) {
-    console.log("API Key:", import.meta.env.VITE_OPENCAGE_API_KEY.split(0,1)[0]); // Debugging line 
+    console.log("API Key:", import.meta.env.VITE_OPENCAGE_API_KEY[0]); // Debugging line 
     try {
       const response = await fetch(
         `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
@@ -237,7 +237,7 @@ function CreateTrip() {
             {activeSection === 'destination' && (
               <div className="pl-14 animate-fade-in">
                 <div className="relative">
-                  <Search className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
+                  <Search className="absolute left-3 top-5 h-5 w-5 text-gray-400" />
                   <input
                     type="text" 
                     value={query} 

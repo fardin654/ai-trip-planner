@@ -10,6 +10,7 @@ import {
   Calendar,
   Users 
 } from 'lucide-react';
+import { Typewriter } from 'react-simple-typewriter';
 
 function Hero() {
   return (
@@ -36,7 +37,18 @@ function Hero() {
         >
           Discover Your Next
           <span className="block bg-gradient-to-r from-[#f56551] to-[#00C897] bg-clip-text text-transparent">
-            Adventure with AI
+            Adventure with AI in 
+          </span>
+          <span className="block bg-gradient-to-r from-[#f56551] to-[#00C897] bg-clip-text text-transparent">
+            <Typewriter
+              words={['Dubai...',' Paris...', 'Tokyo...', 'New York...', 'Sydney...']}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={60}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
           </span>
         </motion.h1>
         
@@ -95,8 +107,8 @@ function Hero() {
         transition={{ duration: 0.7, delay: 0.5 }}
         className="mt-10 sm:mt-16 max-w-5xl w-full"
       >
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        <div className="relative rounded-3xl overflow-hidden">
+          <div className="absolute inset-0 "></div>
           <img 
             src="/landing.png" 
             className='w-full h-auto' 

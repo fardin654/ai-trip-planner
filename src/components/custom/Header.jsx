@@ -66,15 +66,7 @@ function Header() {
         <div className='flex items-center'>
           <img src='./logo.svg' className='h-8 w-8 md:h-10 md:w-10' alt='TrekTailor Logo'/>
           <h2 className="ml-2 text-xl md:text-2xl font-bold bg-gradient-to-r from-[#00C897] to-[#f56551] bg-clip-text text-transparent">
-            <Typewriter
-              words={['TrekTailor', 'Your Travel Buddy', 'Plan with AI']}
-              loop={true}
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1000}
-            />
+            TrekTailor
           </h2>
         </div>
       </a>
